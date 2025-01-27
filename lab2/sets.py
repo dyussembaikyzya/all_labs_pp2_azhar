@@ -107,3 +107,130 @@ thisset = {"apple", "banana", "cherry"}
 del thisset
 print(thisset)
 
+
+# Join Sets
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+
+set3 = set1.union(set2)
+print(set3)
+# {3, 2, 'c', 'a', 'b', 1}
+
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+
+set3 = set1 | set2
+print(set3)
+# {'c', 'a', 1, 3, 2, 'b'}
+
+# Join Multiple Sets
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = {"John", "Elena"}
+set4 = {"apple", "bananas", "cherry"}
+
+myset = set1.union(set2, set3, set4)
+print(myset)
+# {John, 2, 1, apple, cherry, 'c', 'b', 'a', banana, 3, Elena}
+
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = {"John", "Elena"}
+set4 = {"apple", "bananas", "cherry"}
+
+myset = set1 | set2 | set3 |set4
+print(myset)
+# {'a', 3, 'c', Elena, cherry, 1, apple, 'b', banana, 2, John}
+
+# Join a Set and a Tuple
+x = {"a", "b", "c"}
+y = (1, 2, 3)
+
+z = x.union(y)
+print(z)
+# {3, 'a', 2, 'c', 1, 'b'}
+
+# Update
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set1.update(set2)
+print(set1)
+# {1, 2, 3, 'b', 'a', 'c'}
+
+# Intersection
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1.intersection(set2)
+print(set3)
+# {'apple'}
+
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1 & set2
+print(set3)
+# {'apple'}
+
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set1.intersection_update(set2)
+
+print(set1)
+# {'apple'}
+
+set1 = {"apple", 1, "banana", 0, "cherry"}
+set2 = {False, "google", "microsoft", "apple", True}
+
+set3 = set1.intersection(set2)
+print(set3)
+# {False, True, 'apple'}
+
+# Difference
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1.difference(set2)
+
+print(set3)
+# {'banana', 'cherry'}
+
+set1 = {"apple", "banana" , "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1 - set2
+print(set3)
+# {'banana', 'cherry'}
+
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set1.difference_update(set2)
+
+print(set1)
+# {'banana', 'cherry'}
+
+# Symmetric Differences
+set1 = {"apple", "banana" , "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1.symmetric_difference(set2)
+print(set3)
+# {'google', 'banana', 'microsoft', 'cherry'}
+
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set3 = set1 ^ set2
+
+print(set3)
+# {'google', 'banana', 'microsoft', 'cherry'}
+
+set1 = {"apple", "banana" , "cherry"}
+set2 = {"google", "microsoft", "apple"}
+
+set1.symmetric_difference_update(set2)
+print(set1)
+# {'google', 'banana', 'microsoft', 'cherry'}
