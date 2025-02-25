@@ -1,2 +1,0 @@
-print("Fjijf")
-print("dhf")
