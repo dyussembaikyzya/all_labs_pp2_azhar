@@ -120,6 +120,27 @@ def pagination():
     query += ";"
     return query
 
+def run_pagination():
+    query = pagination()
+    if query == "error":
+        print("Пользователь отменил поиск.")
+        return
+    print("\nВаш SQL-запрос:")
+    print(query)
+    connection = create_connection()
+    if connection:
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                rows = cursor.fetchall()
+                print("Результаты запроса:")
+                for row in rows:
+                    print(row)
+        except pgsql.Error as e:
+            print("Ошибка при выполнении запроса:", e)
+        finally:
+            connection.close()
+
 
 def delete():
     connection = create_connection()
@@ -172,5 +193,32 @@ def select_all():
             connection.close()
 
 if __name__ == "__main__":
-    loop_insert()
-    select_all()
+    while True:
+        print("\nВыберите действие:")
+        print("1 - Вставить данные")
+        print("2 - Показать всех пользователей")
+        print("3 - Создать SQL-запрос (поиск)")
+        print("4 - Поиск с offset и limit (пагинация)")
+        print("5 - Удалить пользователя")
+        print("0 - Выход")
+
+        choice = input("Ваш выбор: ").strip()
+
+        if choice == "1":
+            loop_insert()
+        elif choice == "2":
+            select_all()
+        elif choice == "3":
+            query = create_pattern()
+            print("Сформированный SQL-запрос:")
+            print(query)
+        elif choice == "4":
+            run_pagination()
+        elif choice == "5":
+            delete()
+        elif choice == "0":
+            print("Выход из программы.")
+            break
+        else:
+            print("Неверный выбор. Попробуйте снова.")
+
